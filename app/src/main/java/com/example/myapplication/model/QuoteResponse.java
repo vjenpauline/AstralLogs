@@ -1,15 +1,16 @@
 package com.example.myapplication.model;
 
-public class QuoteResponse {
-    private final String q; // The quote text
-    private final String a; // The author
+public class QuoteResponse { // from ZenQuotes
+    private final String q; // gets the quote itself
+    private final String a; // name of the quote author
 
-    // Constructor to set the quote text and author
+    // sets text and author
     public QuoteResponse(String quote, String author) {
         this.q = quote;
         this.a = author;
     }
 
+    //  returns the text and author
     public String getQuote() { return q; }
     public String getAuthor() { return a; }
 }
