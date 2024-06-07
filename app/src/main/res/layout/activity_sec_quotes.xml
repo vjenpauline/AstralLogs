@@ -1,0 +1,70 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sec_quotes"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/quotes_bg"
+        android:layout_width="372dp"
+        android:layout_height="198dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/quote_bg" />
+
+    <TextView
+        android:id="@+id/quote_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dmsans_black"
+        android:text="Quote of the Day"
+        android:textColor="@color/darkblue"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/quotes_bg"
+        app:layout_constraintEnd_toEndOf="@+id/quotes_bg"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="@+id/quotes_bg"
+        app:layout_constraintTop_toTopOf="@+id/quotes_bg"
+        app:layout_constraintVertical_bias="0.201" />
+
+    <TextView
+        android:id="@+id/quote_full"
+        android:layout_width="239dp"
+        android:layout_height="57dp"
+        android:fontFamily="@font/dmsans_regular"
+        android:text=""
+        android:textColor="@color/darkblue"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/quotes_bg"
+        app:layout_constraintEnd_toEndOf="@+id/quotes_bg"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="@+id/quotes_bg"
+        app:layout_constraintTop_toTopOf="@+id/quotes_bg"
+        app:layout_constraintVertical_bias="0.534" />
+
+    <TextView
+        android:id="@+id/quote_author"
+        android:layout_width="217dp"
+        android:layout_height="24dp"
+        android:fontFamily="@font/dmsans_regular"
+        android:gravity="start"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textColor="@color/lightblue"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/quotes_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="@+id/quotes_bg"
+        app:layout_constraintTop_toTopOf="@+id/quotes_bg"
+        app:layout_constraintVertical_bias="0.829" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

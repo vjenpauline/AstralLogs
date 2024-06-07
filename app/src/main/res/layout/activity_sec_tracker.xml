@@ -1,0 +1,47 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sec_tracker"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tracker_amnt"
+        android:layout_width="41dp"
+        android:layout_height="88dp"
+        android:fontFamily="@font/dmmono_medium"
+        android:text="0"
+        android:textColor="@color/yellow"
+        android:textSize="64sp"
+        app:layout_constraintBottom_toTopOf="@+id/dream_logs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/you_have"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/you_have"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:text="you have"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dream_logs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:text="dream logs"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/you_have" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

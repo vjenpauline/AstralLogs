@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/journal_entry_bg"
+    tools:context=".AddJournalEntry">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/entry_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/playfairdisplay_bold"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="31dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <android.widget.Button
+        android:id="@+id/entry_addTagBtn"
+        android:layout_width="113dp"
+        android:layout_height="26dp"
+        android:layout_below="@id/entry_date"
+        android:background="@drawable/addtag_bg"
+        android:fontFamily="@font/dmsans_regular"
+        android:padding="0sp"
+        android:text="+ Add Tag"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.17" />
+
+    <HorizontalScrollView
+        android:id="@+id/tag_scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/entry_addTagBtn"
+        app:layout_constraintTop_toTopOf="@+id/entry_addTagBtn">
+
+        <LinearLayout
+            android:id="@+id/tag_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <EditText
+        android:id="@+id/entry_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry_addTagBtn"
+        android:background="@null"
+        android:fontFamily="@font/playfairdisplay_bold"
+        android:hint="Untitled"
+        android:layout_marginHorizontal="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/lightblue"
+        android:textSize="31sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.252" />
+
+    <EditText
+        android:id="@+id/entry_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_below="@id/entry_header"
+        android:background="@null"
+        android:fontFamily="@font/dmsans_regular"
+        android:hint="Write here..."
+        android:layout_marginHorizontal="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/lightblue"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/entry_header"
+        app:layout_constraintVertical_bias="0.012" />
+
+    <Button
+        android:id="@+id/entry_saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/yellow"
+        android:fontFamily="@font/dmsans_regular"
+        android:text="Save"
+        android:textColor="@color/darkblue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.978" />
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="49dp"
+        android:layout_height="56dp"
+        android:rotationY="180"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/arrow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
