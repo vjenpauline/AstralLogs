@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+// imports all important classes
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.view.LayoutInflater
@@ -11,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.Locale
 
 class JournalEntriesAdapter(
-    private val entries: MutableList<JournalEntry>,
-    private val onDeleteClick: (String) -> Unit,
-    private val onItemClick: (JournalEntry) -> Unit, // Add this callback for item clicks
-    private var layoutType: String
+    private val entries: MutableList<JournalEntry>, // list of journal entries
+    private val onDeleteClick: (String) -> Unit, // callback for delete clicks
+    private val onItemClick: (JournalEntry) -> Unit, // callback for item clicks
+    private var layoutType: String // layout to determine how many recyclerview items shown
 ) : RecyclerView.Adapter<JournalEntriesAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -23,14 +24,12 @@ class JournalEntriesAdapter(
         private val deleteButton: ImageButton = view.findViewById(R.id.delete_entryBtn)
 
         init {
-            deleteButton.setOnClickListener {
-                val position = bindingAdapterPosition
+            deleteButton.setOnClickListener {  // set a click listener on the delete button
+                val position = bindingAdapterPosition // get current position
                 if (position != RecyclerView.NO_POSITION) {
-                    // Safely get the JournalEntry at the position, if it exists
-                    val entry = entries.getOrNull(position)
-                    // Only proceed if the entry and its id are not null
+                    val entry = entries.getOrNull(position) // proceeds if the entry and its id are not null
                     entry?.id?.let { nonNullEntryId ->
-                        onDeleteClick(nonNullEntryId)
+                        onDeleteClick(nonNullEntryId) // call the delete click function
                     }
                 }
             }
@@ -39,7 +38,7 @@ class JournalEntriesAdapter(
                 if (position != RecyclerView.NO_POSITION) {
                     val entry = entries.getOrNull(position)
                     entry?.let { nonNullEntry ->
-                        onItemClick(nonNullEntry) // Invoke the click callback with the entry
+                        onItemClick(nonNullEntry) // call the item click function
                     }
                 }
             }
@@ -54,10 +53,11 @@ class JournalEntriesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val entry = entries[position]
+        // sets title and content
         holder.titleTextView.text = entry.title
         holder.contentTextView.text = entry.content
 
-        // Format the current date and set it to the date TextView
+        // formats the current date and sets it to TextView for display
         val currentDate = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
         val formattedDate = dateFormat.format(currentDate)
@@ -65,23 +65,24 @@ class JournalEntriesAdapter(
     }
 
     override fun getItemCount(): Int {
-        // Return the size based on the layout type
+        // returns the number of items based on the layout type
         return when (layoutType) {
-            "activity_home_page" -> minOf(entries.size, 2)
-            "gallery_of_entries" -> entries.size // No minimum for gallery_of_entries, scroll
+            "activity_home_page" -> minOf(entries.size, 2) // limits to 2 on homepage (for recents)
+            "gallery_of_entries" -> entries.size // no minimum for gallery_of_entries, scroll
             else -> entries.size
         }
     }
 
-    // Method to update the layout type
+    // updates the layout type
     fun updateLayoutType(newLayoutType: String) {
         layoutType = newLayoutType
         notifyDataSetChanged()
     }
 
+    // updates list of entries
     fun updateEntries(newEntries: MutableList<JournalEntry>) {
-        entries.clear()
-        entries.addAll(newEntries)
+        entries.clear() // clears list
+        entries.addAll(newEntries) // adds new entries
         notifyDataSetChanged()
     }
 }

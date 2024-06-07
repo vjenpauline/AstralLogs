@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+// imports all important classes
 import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
@@ -26,9 +27,11 @@ import java.util.Locale
 import java.util.UUID
 
 class AddJournalEntry : AppCompatActivity() {
+    // variables to store data with SharedPreferences
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
 
+    // generates ID with uuid
     private fun generateUniqueId(): String {
         return UUID.randomUUID().toString()
     }
@@ -45,6 +48,7 @@ class AddJournalEntry : AppCompatActivity() {
         val entryTitle = intent.getStringExtra("entryTitle")
         val entryContent = intent.getStringExtra("entryContent")
 
+        // set up UI elements
         val entryDateTextView: TextView = findViewById(R.id.entry_date)
         val currentDate = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
@@ -64,7 +68,7 @@ class AddJournalEntry : AppCompatActivity() {
             setScroller(Scroller(this@AddJournalEntry))
         }
 
-        // Load existing tags if editing an entry
+        // loads tags if editing an entry
         val tagContainer = findViewById<LinearLayout>(R.id.tag_container)
         val existingTags = entryId?.let { loadTagsForEntry(it) } ?: mutableListOf()
         existingTags.forEach { tag ->
@@ -76,6 +80,7 @@ class AddJournalEntry : AppCompatActivity() {
             entryText.setText(entryContent)
         }
 
+        // listeners for buttons (back button, add tag, save entry)
         val backBtn = findViewById<ImageView>(R.id.backBtn)
         backBtn.setOnClickListener {
             finish()
@@ -101,6 +106,7 @@ class AddJournalEntry : AppCompatActivity() {
         }
     }
 
+    // to show dialog for adding tags
     private fun showAddTagDialog(view: View, tagContainer: LinearLayout) {
         val builder = AlertDialog.Builder(view.context)
         builder.setTitle("Enter New Tag")
@@ -118,6 +124,7 @@ class AddJournalEntry : AppCompatActivity() {
         builder.show()
     }
 
+    // function to add new tag to layout
     private fun addTagToLayout(tagText: String, tagContainer: LinearLayout) {
         val newTag = TextView(this)
         newTag.apply {
@@ -134,14 +141,15 @@ class AddJournalEntry : AppCompatActivity() {
             ).apply {
                 setMargins(10, 0, 10, 0)
             }
-            // Add a click listener to the new tag for deletion
+
+            // click listener to the tags to ask if they want to delete
             setOnClickListener { v ->
                 val deleteBuilder = AlertDialog.Builder(v.context)
                 deleteBuilder.setTitle("Delete Tag")
                 deleteBuilder.setMessage("Are you sure you want to delete this tag?")
                 deleteBuilder.setPositiveButton("OK") { dialog, _ ->
                     tagContainer.removeView(v)
-                    // Update the list of tags in SharedPreferences
+                    // updates the list of tags in SharedPreferences
                     val updatedTags = getTagsFromLayout(tagContainer)
                     val entryId = intent.getStringExtra("entryId") ?: generateUniqueId()
                     saveTagsForEntry(entryId, updatedTags)
@@ -160,12 +168,14 @@ class AddJournalEntry : AppCompatActivity() {
         }.toMutableList()
     }
 
+    // function to load tags using SharedPreferences
     private fun loadTagsForEntry(entryId: String): MutableList<String> {
         val tagsJson = sharedPreferences.getString("tags_$entryId", "[]")
         val type = object : TypeToken<MutableList<String>>() {}.type
         return Gson().fromJson(tagsJson, type)
     }
 
+    // extra functions
     private fun saveEntry(entry: JournalEntry) {
         val entries = getEntriesList().apply {
             removeAll { it.id == entry.id }

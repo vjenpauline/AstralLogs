@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+// imports all important classes
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -16,6 +17,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class GalleryOfEntries : AppCompatActivity() {
+    // displays the list of entries
     private lateinit var recyclerViewAdapter: JournalEntriesAdapter
     private lateinit var entries: MutableList<JournalEntry>
 
@@ -24,29 +26,30 @@ class GalleryOfEntries : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.gallery_of_entries)
 
-        // Fetch the current list of entries
+        // gets the list of journal entries from storage
         entries = getEntriesList(this)
 
-        // Initialize the adapter with the current list of entries and a lambda to handle deletion
+        // setting up the adapter that manages how the data is displayed
         recyclerViewAdapter = JournalEntriesAdapter(entries, { entryId ->
-            deleteEntryFromUI(entryId)
+            deleteEntryFromUI(entryId) // called to delete an entry
         }, { entry ->
-            // Handle item click, navigate to AddJournalEntry with the entry data
+            // handle pressing, navigates to AddJournalEntry with the entry data so user can edit
             val editIntent = Intent(this, AddJournalEntry::class.java)
             editIntent.putExtra("entryId", entry.id)
             editIntent.putExtra("entryTitle", entry.title)
             editIntent.putExtra("entryContent", entry.content)
-            // ... pass other properties as needed ...
             startActivity(editIntent)
         }, "gallery_of_entries")
 
+        // updating the layout type for the adapter
         recyclerViewAdapter.updateLayoutType("gallery_of_entries")
 
-        // Set the adapter to the RecyclerView
-        val recyclerView: RecyclerView = findViewById(R.id.recycler_view_gallery) // Make sure you have a RecyclerView with this ID in your layout
+        // set the adapter to the RecyclerView, makes it scroll
+        val recyclerView: RecyclerView = findViewById(R.id.recycler_view_gallery)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = recyclerViewAdapter
 
+        // buttons to go to homepage and add journal entry
         findViewById<ImageButton>(R.id.homeBtn).setOnClickListener {
             startActivity(Intent(this, HomePage::class.java))
         }
@@ -63,6 +66,7 @@ class GalleryOfEntries : AppCompatActivity() {
             }
         }
 
+        // information button that opens up popup
         findViewById<Button>(R.id.infoBtn).setOnClickListener {
             val dialog = Dialog(this)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -75,6 +79,7 @@ class GalleryOfEntries : AppCompatActivity() {
         }
     }
 
+    // retrieves list of entries from shared preferences.
     private fun getEntriesList(context: Context): MutableList<JournalEntry> {
         val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val entriesJson = sharedPreferences.getString("journal_entries", "[]")
@@ -82,19 +87,20 @@ class GalleryOfEntries : AppCompatActivity() {
         return Gson().fromJson(entriesJson, type)
     }
 
+    // removes an entry from the UI and updates storage
     private fun deleteEntryFromUI(deletedEntryId: String) {
-        // Find the entry in the list and remove it
+        // finds the entry in the list
         val entryIndex = entries.indexOfFirst { it.id == deletedEntryId }
         if (entryIndex != -1) {
             entries.removeAt(entryIndex)
             recyclerViewAdapter.notifyItemRemoved(entryIndex)
-            // Save the updated list to SharedPreferences
+            // saves the updated list
             saveEntriesList(entries)
         }
     }
 
+    // saves the list of entries to shared preferences
     private fun saveEntriesList(entries: MutableList<JournalEntry>) {
-        // Serialize and save the entries list to SharedPreferences
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         val entriesJson = Gson().toJson(entries)
@@ -103,14 +109,14 @@ class GalleryOfEntries : AppCompatActivity() {
     }
 
     override fun onResume() {
-        super.onResume()
+        super.onResume() // refreshes the list of entries
         updateRecentEntries()
     }
 
     private fun updateRecentEntries() {
         val entries = getEntriesList(this)
         if (entries.isNotEmpty()) {
-            // Update your RecyclerView with the new entries
+            // updates RecyclerView with new entries
             recyclerViewAdapter.updateEntries(entries)
         }
     }

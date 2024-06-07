@@ -1,8 +1,9 @@
 package com.example.myapplication
 
+// data class that represents journal entries
 data class JournalEntry(
-    val id: String,
-    val title: String,
-    val content: String,
-    val tags: MutableList<String> = mutableListOf() // Add this line to include tags
+    val id: String, // unique ID of entry
+    val title: String, // title/header
+    val content: String, // content/text of entry
+    val tags: MutableList<String> = mutableListOf() // list of tags
 )

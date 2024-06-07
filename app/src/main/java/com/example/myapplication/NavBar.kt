@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+// imports all important classes
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
