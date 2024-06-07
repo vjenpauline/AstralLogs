@@ -35,13 +35,13 @@
         android:id="@+id/textView4"
         android:layout_width="250dp"
         android:layout_height="127dp"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="332dp"
-        android:text="1. On the Homepage, there is a quote generator and a journal amount tracker.
+        android:text="1. On the Homepage, there is a quote generator and a journal amount tracker. \n
 2. On the gallery page, you can browse your entries. Start logging your entries by clicking the pink button below."
         android:textAlignment="center"
         android:textColor="@color/darkblue"
         android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

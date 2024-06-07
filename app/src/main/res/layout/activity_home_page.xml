@@ -35,8 +35,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.589" />
+        app:layout_constraintTop_toBottomOf="@+id/include_sec_tracker"
+        app:layout_constraintVertical_bias="0.065" />
 
     <TextView
         android:id="@+id/input_name"
@@ -92,10 +92,12 @@
         android:id="@+id/recycler_view_recent"
         android:layout_width="0dp"
         android:layout_height="230dp"
+        app:layout_constraintBottom_toBottomOf="@+id/include_navbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recent_entries"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/recent_entry" />
 
     <include
