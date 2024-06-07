@@ -8,6 +8,16 @@
     android:background="@color/bgblue"
     tools:context=".HomePage">
 
+    <!--
+    Homepage of the application!
+    Includes:
+      Welcome
+      Quotes
+      Entry Tracker
+      Recent Journal Entries
+    -->
+
+    <!-- Heading (welcomes the user) -->
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
@@ -22,21 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.047" />
-
-    <TextView
-        android:id="@+id/recent_entries"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/playfairdisplay_bold"
-        android:text="Recent Entries"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include_sec_tracker"
-        app:layout_constraintVertical_bias="0.065" />
 
     <TextView
         android:id="@+id/input_name"
@@ -66,6 +61,7 @@
         app:layout_constraintVertical_bias="0.046"
         app:srcCompat="@drawable/logo" />
 
+    <!-- Quotes Layout (shows a different quote daily) -->
     <include
         android:id="@+id/include_sec_quotes"
         layout="@layout/activity_sec_quotes"
@@ -76,6 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Tracker Layout (shows amount of journal entries made) -->
     <include
         android:id="@+id/include_sec_tracker"
         layout="@layout/activity_sec_tracker"
@@ -87,6 +84,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/include_sec_quotes"
         app:layout_constraintVertical_bias="0.0" />
+
+    <!-- Recent Entries Part (shows the two recent journal entries) -->
+    <TextView
+        android:id="@+id/recent_entries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfairdisplay_bold"
+        android:text="Recent Entries"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_sec_tracker"
+        app:layout_constraintVertical_bias="0.065" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_recent"
