@@ -11,6 +11,13 @@
     android:layout_marginHorizontal="20dp"
     tools:context=".RecentEntry">
 
+    <!--
+    Recent Entries Layout
+       (this is not just a recent entry layout, but also shows
+       summary for the gallery page)
+    -->
+
+    <!-- Date that gets updated -->
     <TextView
         android:id="@+id/recent_entry_date"
         android:layout_width="match_parent"
@@ -28,6 +35,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <!-- Header/title that gets updated on user input -->
     <TextView
         android:id="@+id/recent_entry_title"
         android:layout_width="match_parent"
@@ -48,6 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recent_entry_date"
         app:layout_constraintVertical_bias="0.062" />
 
+    <!-- Text that gets updated on user input -->
     <TextView
         android:id="@+id/recent_entry_summary"
         android:layout_width="match_parent"
@@ -67,6 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recent_entry_title" />
 
+    <!-- Button to delete entry -->
     <ImageButton
         android:id="@+id/delete_entryBtn"
         android:layout_width="35dp"

@@ -7,6 +7,13 @@
     android:background="@color/bgblue"
     tools:context=".GalleryOfEntries">
 
+    <!--
+    Gallery of Entries Page
+    Includes:
+       RecyclerView to check saved entries
+       Information Button that shows popup
+    -->
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="39dp"
@@ -19,6 +26,7 @@
         app:layout_constraintVertical_bias="0.05"
         app:srcCompat="@drawable/logo" />
 
+    <!-- Information Button -->
     <Button
         android:id="@+id/infoBtn"
         android:layout_width="wrap_content"
@@ -72,6 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Shows All Current Entries -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_gallery"
         android:layout_width="match_parent"

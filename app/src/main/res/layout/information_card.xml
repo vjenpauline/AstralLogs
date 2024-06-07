@@ -5,6 +5,10 @@
     android:layout_height="wrap_content"
     android:background="@drawable/info_card_bg">
 
+    <!--
+    Information Popup
+    -->
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="332dp"

@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!--
+    Quote of the Day Section
+    -->
+
     <ImageView
         android:id="@+id/quotes_bg"
         android:layout_width="372dp"
@@ -33,6 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/quotes_bg"
         app:layout_constraintVertical_bias="0.201" />
 
+    <!-- Quote that changes -->
     <TextView
         android:id="@+id/quote_full"
         android:layout_width="239dp"
@@ -41,6 +46,8 @@
         android:text=""
         android:textColor="@color/darkblue"
         android:textSize="15sp"
+        android:maxLines="3"
+        android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="@+id/quotes_bg"
         app:layout_constraintEnd_toEndOf="@+id/quotes_bg"
         app:layout_constraintHorizontal_bias="0.552"
@@ -48,6 +55,7 @@
         app:layout_constraintTop_toTopOf="@+id/quotes_bg"
         app:layout_constraintVertical_bias="0.534" />
 
+    <!-- Author of quote that changes -->
     <TextView
         android:id="@+id/quote_author"
         android:layout_width="217dp"

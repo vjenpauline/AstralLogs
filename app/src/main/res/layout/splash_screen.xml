@@ -8,6 +8,10 @@
     android:layout_height="match_parent"
     tools:context=".SplashScreen">
 
+    <!--
+    Full splash screen of logo
+    -->
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"

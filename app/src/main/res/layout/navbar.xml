@@ -7,6 +7,14 @@
     android:id="@+id/navbar"
     tools:context=".NavBar">
 
+    <!--
+    Navigation Bar
+    Includes:
+       Home Button
+       Add Journal Entry Button
+       Gallery/Index Button
+    -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navbar_rectangle"
         android:layout_width="match_parent"
@@ -48,6 +56,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Add button outside of constraint layout so that it will be highlighted -->
     <ImageButton
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"

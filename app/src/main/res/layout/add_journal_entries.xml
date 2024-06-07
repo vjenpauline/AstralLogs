@@ -7,6 +7,14 @@
     android:background="@drawable/journal_entry_bg"
     tools:context=".AddJournalEntry">
 
+    <!--
+    Add Journal Entry Page
+    Includes:
+       Automatic Date
+       Editable Texts
+       Button and Tags
+    -->
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="39dp"
@@ -19,6 +27,7 @@
         app:layout_constraintVertical_bias="0.08"
         app:srcCompat="@drawable/logo" />
 
+    <!-- Date that ynamically changes based on the day user created the entry -->
     <TextView
         android:id="@+id/entry_date"
         android:layout_width="wrap_content"
@@ -36,6 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.073" />
 
+    <!-- Adding Tags Button -->
     <android.widget.Button
         android:id="@+id/entry_addTagBtn"
         android:layout_width="113dp"
@@ -53,6 +63,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.17" />
 
+    <!-- Container for Tags -->
     <HorizontalScrollView
         android:id="@+id/tag_scroll_view"
         android:layout_width="0dp"
@@ -70,6 +81,7 @@
             android:orientation="horizontal" />
     </HorizontalScrollView>
 
+    <!-- Editable Header -->
     <EditText
         android:id="@+id/entry_header"
         android:layout_width="0dp"
@@ -88,6 +100,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.252" />
 
+    <!-- Editable Text -->
     <EditText
         android:id="@+id/entry_text"
         android:layout_width="0dp"

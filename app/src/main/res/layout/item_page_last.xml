@@ -8,6 +8,10 @@
     android:background="@color/bgblue"
     tools:context=".MainActivity">
 
+    <!--
+    Last Onboarding Page
+    -->
+
     <TextView
         android:id="@+id/iv_askname"
         android:layout_width="wrap_content"

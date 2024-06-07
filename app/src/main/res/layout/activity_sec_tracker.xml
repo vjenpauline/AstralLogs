@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!--
+    Entry Amount Tracker Section
+    -->
+
+    <!-- Number that changes based on journal entry amount -->
     <TextView
         android:id="@+id/tracker_amnt"
         android:layout_width="41dp"
